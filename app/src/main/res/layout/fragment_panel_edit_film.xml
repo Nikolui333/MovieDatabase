@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Tabs.films.PanelEditFilm">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/orange"
+            android:padding="10dp">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headerEditFilm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="60dp"
+                android:textColor="@color/black"
+                android:text="@string/editFilm"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sectionEditNameFilm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/headerEditFilm"
+                android:layout_margin="10dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@android:color/white"
+                app:startIconTint="@android:color/white"
+                app:endIconTint="@android:color/holo_red_light"
+                android:hint="@string/labelEnterNameFilm"
+                app:hintTextColor="@android:color/white"
+                app:startIconDrawable="@android:drawable/ic_dialog_dialer"
+                app:endIconMode="clear_text"
+                app:boxStrokeWidthFocused="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editNameFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@android:color/white"
+                    android:textCursorDrawable="@drawable/cursor"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sectionEditCategoryFilm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sectionEditNameFilm"
+                android:layout_margin="10dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@android:color/white"
+                app:startIconTint="@android:color/white"
+                app:endIconTint="@android:color/holo_red_light"
+                android:hint="@string/labelEnterNumberCategory"
+                app:hintTextColor="@android:color/white"
+                app:startIconDrawable="@android:drawable/ic_menu_slideshow"
+                app:endIconMode="clear_text"
+                app:boxStrokeWidthFocused="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editCategoryFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@android:color/white"
+                    android:textCursorDrawable="@drawable/cursor"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sectionEditDurationFilm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sectionEditCategoryFilm"
+                android:layout_margin="10dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@android:color/white"
+                app:startIconTint="@android:color/white"
+                app:endIconTint="@android:color/holo_red_light"
+                android:hint="@string/labelEnterDurationFilm"
+                app:hintTextColor="@android:color/white"
+                app:startIconDrawable="@android:drawable/presence_away"
+                app:endIconMode="clear_text"
+                app:boxStrokeWidthFocused="4dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editDurationFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@android:color/white"
+                    android:textCursorDrawable="@drawable/cursor"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/sectionResEditFilm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sectionEditDurationFilm"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/resEditNameFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/resEditCategoryFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/resEditDurationFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonEditFilm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sectionResEditFilm"
+                android:layout_marginTop="20dp"
+                android:text="@string/editFilm"
+                android:background="@color/black"
+                android:textColor="@color/orange"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

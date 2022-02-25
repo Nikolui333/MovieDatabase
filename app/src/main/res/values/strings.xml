@@ -22,10 +22,11 @@
     <string name="labelEnterDurationFilm">Введите длительность</string>
 
     <string name="deleteAllCategories">УДАЛИТЬ ВСЕ КАТЕГОРИИ</string>
-    <string name="deleteAllFilm">УДАЛИТЬ ВСЕ ФИЛЬМЫ</string>
+    <string name="deleteAllFilms">УДАЛИТЬ ВСЕ ФИЛЬМЫ</string>
 
     <string name="comedy">КОМЕДИИ</string>
     <string name="thrillers">ТРИЛЛЕРЫ</string>
+    <string name="actionMovieCatalog">Каталог боевиков</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

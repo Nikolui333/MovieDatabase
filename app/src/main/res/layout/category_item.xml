@@ -42,7 +42,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_margin="10dp"
                 android:backgroundTint="@android:color/transparent"
-                android:src="@drawable/delete"/>
+                android:src="@android:drawable/btn_star_big_on"/>
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/editCategory"
