@@ -21,7 +21,7 @@ import retrofit2.Response
 class CatalogFilms : Fragment(),View.OnClickListener {
 
     private var binding: FragmentCatalogFilmsBinding? = null
-    private var productsAdapter: FilmsAdapter? = null
+    private var filmsAdapter: FilmsAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,31 +30,31 @@ class CatalogFilms : Fragment(),View.OnClickListener {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_catalog_films, container, false)
 
-        loadProducts()
+        loadFilms()
 
-        binding?.deleteAllProducts?.setOnClickListener(this)
+        binding?.deleteAllFilms?.setOnClickListener(this)
 
         return binding?.root
     }
 
-    private fun loadProducts () {
+    private fun loadFilms () {
 
-        val callProducts = ApiClient.instance?.api?.getFilm()
-        callProducts?.enqueue(object: Callback<ArrayList<FilmsApiModel>> {
+        val callFilms = ApiClient.instance?.api?.getFilm()
+        callFilms?.enqueue(object: Callback<ArrayList<FilmsApiModel>> {
             override fun onResponse(
                 call: Call<ArrayList<FilmsApiModel>>,
                 response: Response<ArrayList<FilmsApiModel>>
             ) {
 
-                val loadProducts = response.body()
+                val loadFilms = response.body()
 
                 binding?.recyclerFilms?.layoutManager = LinearLayoutManager(context)
-                productsAdapter = loadProducts?.let {
+                filmsAdapter = loadFilms?.let {
                     FilmsAdapter(
-                        it, { idProduct:Int->deleteProduct(idProduct)},
-                        {productsApiModel:FilmsApiModel->editProduct(productsApiModel)})
+                        it, { idFilm:Int->deleteFilm(idFilm)},
+                        {filmsApiModel:FilmsApiModel->editFilm(filmsApiModel)})
                 }
-                binding?.recyclerFilms?.adapter = productsAdapter
+                binding?.recyclerFilms?.adapter = filmsAdapter
 
                 Toast.makeText(context, "ЗАГРУЗКА", Toast.LENGTH_SHORT).show()
 
@@ -70,15 +70,15 @@ class CatalogFilms : Fragment(),View.OnClickListener {
 
     override fun onClick(v: View?) {
 
-        clearAllProducts()
+        clearAllFilms()
 
     }
 
-    private fun deleteProduct(id:Int) {
+    private fun deleteFilm(id:Int) {
 
-        val callDeleteProduct: Call<ResponseBody?>? = ApiClient.instance?.api?.deleteFilm(id)
+        val callDeleteFilm: Call<ResponseBody?>? = ApiClient.instance?.api?.deleteFilm(id)
 
-        callDeleteProduct?.enqueue(object : Callback<ResponseBody?> {
+        callDeleteFilm?.enqueue(object : Callback<ResponseBody?> {
             override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
                 Toast.makeText(
                     context,
@@ -86,7 +86,7 @@ class CatalogFilms : Fragment(),View.OnClickListener {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                loadProducts()
+                loadFilms()
             }
 
             override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
@@ -102,23 +102,23 @@ class CatalogFilms : Fragment(),View.OnClickListener {
 
     }
 
-    private fun editProduct(productsApiModel: FilmsApiModel) {
-        val panelEditProduct = PanelEditFilm()
+    private fun editFilm(filmsApiModel: FilmsApiModel) {
+        val panelEditFilm = PanelEditFilm()
         val parameters = Bundle()
-        parameters.putString("idProduct", productsApiModel.id.toString())
-        parameters.putString("nameProduct", productsApiModel.name)
-        parameters.putString("categoryProduct", productsApiModel.category)
-        parameters.putString("priceProduct", productsApiModel.duration)
-        panelEditProduct.arguments = parameters
+        parameters.putString("idFilm", filmsApiModel.id.toString())
+        parameters.putString("nameFilm", filmsApiModel.name)
+        parameters.putString("categoryFilm", filmsApiModel.category)
+        parameters.putString("durationFilm", filmsApiModel.duration)
+        panelEditFilm.arguments = parameters
 
-        panelEditProduct.show((context as FragmentActivity).supportFragmentManager, "editFilm")
+        panelEditFilm.show((context as FragmentActivity).supportFragmentManager, "editFilm")
     }
 
-    private fun clearAllProducts() {
+    private fun clearAllFilms() {
 
-        val callClearAllProducts: Call<ResponseBody?>? = ApiClient.instance?.api?.clearFilms()
+        val callClearAllFilms: Call<ResponseBody?>? = ApiClient.instance?.api?.clearFilms()
 
-        callClearAllProducts?.enqueue(object : Callback<ResponseBody?> {
+        callClearAllFilms?.enqueue(object : Callback<ResponseBody?> {
             override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
                 Toast.makeText(
                     context,
@@ -126,7 +126,7 @@ class CatalogFilms : Fragment(),View.OnClickListener {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                loadProducts()
+                loadFilms()
             }
 
             override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {

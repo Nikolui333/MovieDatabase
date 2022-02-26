@@ -40,7 +40,7 @@ class FilmsAdapter (private val filmsList : ArrayList<FilmsApiModel>,
 
             binding.nameFilm.text = films.name
             binding.categoryFilm.text = films.category
-            binding.priceFilm.text = films.duration.toString()
+            binding.durationFilm.text = films.duration.toString()
 
 
             binding.editFilm.setOnClickListener(View.OnClickListener {

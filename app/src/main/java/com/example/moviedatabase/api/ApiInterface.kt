@@ -19,7 +19,7 @@ interface ApiInterface {
     fun insertFilm(
         @Field("name") name: String?,
         @Field("category") category: String?,
-        @Field("price") price: String?
+        @Field("duration") duration: String?
     ): Call<ResponseBody?>?
 
     @FormUrlEncoded
@@ -35,7 +35,7 @@ interface ApiInterface {
         @Field("id") id: Int,
         @Field("name") name: String?,
         @Field("category") category: String?,
-        @Field("duration") price: String?
+        @Field("duration") duration: String?
     ): Call<ResponseBody?>?
 
     @FormUrlEncoded
@@ -63,7 +63,7 @@ interface ApiInterface {
     fun getFilm(): Call<ArrayList<FilmsApiModel>>
 
     @GET("getFilmFilter.php")
-    fun getProductFilter(@Query("category") category: String, @Query("duration") price: String):
+    fun getProductFilter(@Query("category") category: String, @Query("duration") duration: String):
             Call<ArrayList<FilmsApiModel>>
 
 }

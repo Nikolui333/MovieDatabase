@@ -60,9 +60,6 @@ class ActionMovieCatalog : Fragment() {
                 binding?.recyclerActionMovies?.adapter = filmsAdapter
 
                 Toast.makeText(context, "ЗАГРУЗКА", Toast.LENGTH_SHORT).show()
-
-
-
             }
 
             override fun onFailure(call: Call<ArrayList<FilmsApiModel>>, t: Throwable) {

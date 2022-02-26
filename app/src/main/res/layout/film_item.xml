@@ -44,7 +44,7 @@
                 android:textColor="@color/black"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/priceFilm"
+                android:id="@+id/durationFilm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"

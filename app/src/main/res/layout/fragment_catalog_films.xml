@@ -13,7 +13,7 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/deleteAllProducts"
+                android:id="@+id/deleteAllFilms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +26,7 @@
                 android:id="@+id/recyclerFilms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/deleteAllProducts"
+                app:layout_constraintTop_toBottomOf="@id/deleteAllFilms"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
