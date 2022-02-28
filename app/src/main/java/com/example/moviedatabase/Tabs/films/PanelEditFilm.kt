@@ -32,7 +32,7 @@ class PanelEditFilm  : BottomSheetDialogFragment(),View.OnKeyListener, View.OnCl
         idFilm = arguments?.getString("idFilm")?.toInt()
         binding?.editNameFilm?.setText(arguments?.getString("nameFilm").toString())
         binding?.editCategoryFilm?.setText(arguments?.getString("categoryFilm").toString())
-        binding?.editDurationFilm?.setText(arguments?.getString("priceFilm").toString())
+        binding?.editDurationFilm?.setText(arguments?.getString("durationFilm").toString())
 
         binding?.editNameFilm?.setOnKeyListener(this)
         binding?.editCategoryFilm?.setOnKeyListener(this)

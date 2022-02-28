@@ -41,21 +41,21 @@ class ActionMovieCatalog : Fragment() {
 
     private fun loadClothes () {
 
-        val callGetClothes = ApiClient.instance?.api?.getProductFilter(getString(R.string.actionMovieCatalog),
-            getString(R.string.priceFilter))
+        val callGetClothes = ApiClient.instance?.api?.getFilmFilter(getString(R.string.actionMovieCatalog),
+            getString(R.string.durationFilter))
         callGetClothes?.enqueue(object: Callback<ArrayList<FilmsApiModel>> {
             override fun onResponse(
                 call: Call<ArrayList<FilmsApiModel>>,
                 response: Response<ArrayList<FilmsApiModel>>
             ) {
 
-                val loadProducts = response.body()
+                val loadFilms = response.body()
 
                 binding?.recyclerActionMovies?.layoutManager = LinearLayoutManager(context)
-                filmsAdapter = loadProducts?.let {
+                filmsAdapter = loadFilms?.let {
                     FilmsAdapter(
-                        it, { idProduct:Int->deleteProduct(idProduct)},
-                        {productsApiModel:FilmsApiModel->editProduct(productsApiModel)})
+                        it, { idFilm:Int->deleteFilm(idFilm)},
+                        {filmsApiModel:FilmsApiModel->editFilm(filmsApiModel)})
                 }
                 binding?.recyclerActionMovies?.adapter = filmsAdapter
 
@@ -71,11 +71,11 @@ class ActionMovieCatalog : Fragment() {
     }
 
 
-    private fun deleteProduct(id:Int) {
+    private fun deleteFilm(id:Int) {
 
-        val callDeleteProduct: Call<ResponseBody?>? = ApiClient.instance?.api?.deleteFilm(id)
+        val callDeleteFilm: Call<ResponseBody?>? = ApiClient.instance?.api?.deleteFilm(id)
 
-        callDeleteProduct?.enqueue(object : Callback<ResponseBody?> {
+        callDeleteFilm?.enqueue(object : Callback<ResponseBody?> {
             override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
                 Toast.makeText(
                     context,
@@ -101,15 +101,15 @@ class ActionMovieCatalog : Fragment() {
 
     }
 
-    private fun editProduct(productsApiModel: FilmsApiModel) {
-        val panelEditProduct = PanelEditFilm()
+    private fun editFilm(filmsApiModel: FilmsApiModel) {
+        val panelEditFilm = PanelEditFilm()
         val parameters = Bundle()
-        parameters.putString("idFilm", productsApiModel.id.toString())
-        parameters.putString("nameFilm", productsApiModel.name)
-        parameters.putString("categoryFilm", productsApiModel.category)
-        parameters.putString("durationFilm", productsApiModel.duration)
-        panelEditProduct.arguments = parameters
+        parameters.putString("idFilm", filmsApiModel.id.toString())
+        parameters.putString("nameFilm", filmsApiModel.name)
+        parameters.putString("categoryFilm", filmsApiModel.category)
+        parameters.putString("durationFilm", filmsApiModel.duration)
+        panelEditFilm.arguments = parameters
 
-        panelEditProduct.show((context as FragmentActivity).supportFragmentManager, "editFilm")
+        panelEditFilm.show((context as FragmentActivity).supportFragmentManager, "editFilm")
     }
 }

@@ -63,7 +63,7 @@ interface ApiInterface {
     fun getFilm(): Call<ArrayList<FilmsApiModel>>
 
     @GET("getFilmFilter.php")
-    fun getProductFilter(@Query("category") category: String, @Query("duration") duration: String):
+    fun getFilmFilter(@Query("category") category: String, @Query("duration") duration: String):
             Call<ArrayList<FilmsApiModel>>
 
 }

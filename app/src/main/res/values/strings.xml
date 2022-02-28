@@ -6,7 +6,7 @@
     <string name="catalogActionMovies">БОЕВИКИ</string>
     <string name="catalogCategories">КАТЕГОРИИ</string>
 
-    <string name="priceFilter">120</string>
+    <string name="durationFilter">120</string>
 
 
     <string name="addCategory">ДОБАВИТЬ КАТЕГОРИЮ</string>

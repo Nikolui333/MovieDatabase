@@ -30,14 +30,14 @@ class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_panel, container, false)
 
 
-        binding?.enterNameProduct?.setOnKeyListener(this)
-        binding?.enterCategoryProduct?.setOnKeyListener(this)
-        binding?.enterPriceProduct?.setOnKeyListener(this)
+        binding?.enterNameFilm?.setOnKeyListener(this)
+        binding?.enterCategoryFilm?.setOnKeyListener(this)
+        binding?.enterDurationFilm?.setOnKeyListener(this)
 
         binding?.buttonAddActionMovies?.setOnClickListener(this)
         binding?.buttonAddCategoryShoes?.setOnClickListener(this)
         binding?.buttonAddCategoryAccessories?.setOnClickListener(this)
-        binding?.buttonAddProduct?.setOnClickListener(this)
+        binding?.buttonAddFilm?.setOnClickListener(this)
 
 
 
@@ -47,28 +47,28 @@ class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {
     override fun onKey(view: View, i: Int, keyEvent: KeyEvent): Boolean {
         when (view.id) {
 
-            R.id.enterNameProduct -> {
+            R.id.enterNameFilm -> {
                 if (keyEvent.action == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
-                    binding?.resEnterNameProduct?.text = binding?.enterNameProduct?.text
-                    binding?.enterNameProduct?.setText("")
+                    binding?.resEnterNameFilm?.text = binding?.enterNameFilm?.text
+                    binding?.enterNameFilm?.setText("")
                     return true
                 }
 
             }
 
-            R.id.enterCategoryProduct -> {
+            R.id.enterCategoryFilm -> {
                 if (keyEvent.action == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
-                    binding?.resEnterCategoryProduct?.text = binding?.enterCategoryProduct?.text
-                    binding?.enterCategoryProduct?.setText("")
+                    binding?.resEnterCategoryFilm?.text = binding?.enterCategoryFilm?.text
+                    binding?.enterCategoryFilm?.setText("")
                     return true
                 }
 
             }
 
-            R.id.enterPriceProduct -> {
+            R.id.enterDurationFilm -> {
                 if (keyEvent.action == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
-                    binding?.resEnterPriceProduct?.text = binding?.enterPriceProduct?.text
-                    binding?.enterPriceProduct?.setText("")
+                    binding?.resEnterDurationFilm?.text = binding?.enterDurationFilm?.text
+                    binding?.enterDurationFilm?.setText("")
                     return true
                 }
 
@@ -100,15 +100,15 @@ class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {
 
             }
 
-            R.id.buttonAddProduct -> {
+            R.id.buttonAddFilm -> {
 
-                insertProduct(
-                    binding?.resEnterNameProduct?.text?.toString(),
-                    binding?.resEnterCategoryProduct?.text?.toString(),
-                    binding?.resEnterPriceProduct?.text?.toString()
+                insertFilm(
+                    binding?.resEnterNameFilm?.text?.toString(),
+                    binding?.resEnterCategoryFilm?.text?.toString(),
+                    binding?.resEnterDurationFilm?.text?.toString()
                 )
 
-                clearResEnterProduct()
+                clearResEnterFilm()
 
             }
 
@@ -117,10 +117,10 @@ class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {
 
     }
 
-    private fun clearResEnterProduct() {
-        binding?.resEnterNameProduct?.setText("")
-        binding?.resEnterCategoryProduct?.setText("")
-        binding?.resEnterPriceProduct?.setText("")
+    private fun clearResEnterFilm() {
+        binding?.resEnterNameFilm?.setText("")
+        binding?.resEnterCategoryFilm?.setText("")
+        binding?.resEnterDurationFilm?.setText("")
 
     }
 
@@ -139,14 +139,13 @@ class Panel : Fragment(), View.OnKeyListener, View.OnClickListener {
     }
 
 
-    private fun insertProduct(name: String?, category: String?, price: String?) {
-        val callInsertProduct: Call<ResponseBody?>? =
-            ApiClient.instance?.api?.insertFilm(name, category, price)
-        callInsertProduct?.enqueue(object : Callback<ResponseBody?> {
+    private fun insertFilm(name: String?, category: String?, duration: String?) {
+        val callInsertFilm: Call<ResponseBody?>? =
+            ApiClient.instance?.api?.insertFilm(name, category, duration)
+        callInsertFilm?.enqueue(object : Callback<ResponseBody?> {
             override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
                 Toast.makeText(context, "ТОВАР ДОБАВЛЕН", Toast.LENGTH_SHORT).show()
             }
-
             override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
                 Toast.makeText(context, "ОШИБКА", Toast.LENGTH_SHORT).show()
             }
